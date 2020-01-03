@@ -13,17 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LatestMessageActivity"
-            android:label="@string/title_activity_latest_message"
+            android:name=".messages.ChatLogActivity"
+            android:label="@string/title_activity_chat_log"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".messages.Main2Activity" />
+        <activity
+            android:name=".models.User"
+            android:label="@string/title_activity_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".messages.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".messages.LatestMessageActivity" />
+        </activity>
+        <activity android:name=".messages.LatestMessageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".registerlogin.RegisterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".registerlogin.LoginActivity" />
     </application>
 
 </manifest>
