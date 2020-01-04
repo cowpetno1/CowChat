@@ -39,14 +39,32 @@ class NewMessageActivity : AppCompatActivity() {
 
     }
 
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
+
     private fun fetchUsers(){
         GetUserThread.start()
+
+        adapter.setOnItemClickListener { item, view ->
+
+            val userItem = item as UserItem
+
+            val intent = Intent(view.context, ChatLogActivity::class.java)
+//          intent.putExtra(USER_KEY,  userItem.user.username)
+            intent.putExtra(USER_KEY, userItem.nameofUser)
+            startActivity(intent)
+
+            finish()
+
+        }
+
 
 
 
     }
 
-
+    val adapter = GroupAdapter<ViewHolder>()
 
 
     val GetUserThread = object : Thread(){
@@ -55,7 +73,7 @@ class NewMessageActivity : AppCompatActivity() {
             val database = client.getDatabase("CowChat")
             val col = database.getCollection<FindUser>("Users")
 
-            val adapter = GroupAdapter<ViewHolder>()
+
             val list : List<FindUser> = col.find().toList()
 
             list.forEach {
@@ -64,13 +82,8 @@ class NewMessageActivity : AppCompatActivity() {
                     adapter.add(UserItem(user))
                     this@NewMessageActivity.runOnUiThread(java.lang.Runnable{
                         recyclerview_newmessage.adapter =adapter
-                        adapter.setOnItemClickListener{item, view ->
-
-                            val intent : Intent(this, )
-                            startActivity()
-
-                        }
                     })
+
                 }
             }
             Log.d("TEsting",list.toString())

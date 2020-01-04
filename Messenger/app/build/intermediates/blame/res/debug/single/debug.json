@@ -588,6 +588,10 @@
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
+        "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_from_row.xml.flat",
+        "source": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\layout\\chat_from_row.xml"
+    },
+    {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_tint.xml.flat",
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\c5beff4117edaecda6d2aa3335a0344c\\play-services-base-17.1.0\\res\\color\\common_google_signin_btn_tint.xml"
     },
@@ -1188,6 +1192,10 @@
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\c61184f59dfb0168cc97b05981875f5a\\material-1.0.0\\res\\drawable\\design_snackbar_background.xml"
     },
     {
+        "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_chat_log.xml.flat",
+        "source": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\layout\\content_chat_log.xml"
+    },
+    {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_edit_text_material.xml.flat",
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
@@ -1598,6 +1606,10 @@
     {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_to_row.xml.flat",
+        "source": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\layout\\chat_to_row.xml"
     },
     {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -2070,6 +2082,10 @@
     {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chat_log.xml.flat",
+        "source": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\layout\\activity_chat_log.xml"
     },
     {
         "merged": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",

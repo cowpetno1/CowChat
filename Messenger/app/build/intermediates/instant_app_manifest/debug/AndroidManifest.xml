@@ -26,6 +26,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.messenger.messages.ChatLogActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".messages.LatestMessageActivity" />
+        </activity>
         <activity
             android:name="com.example.messenger.models.User"
             android:label="@string/title_activity_user"

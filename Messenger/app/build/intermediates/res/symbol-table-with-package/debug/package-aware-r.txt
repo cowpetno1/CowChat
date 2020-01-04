@@ -1137,6 +1137,7 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
+id editText
 id edit_query
 id email_edittext_login
 id email_edittext_register
@@ -1208,6 +1209,7 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id recyclerview_chatlog
 id recyclerview_newmessage
 id register_button_register
 id right
@@ -1236,6 +1238,7 @@ id select_dialog_listview
 id selected
 id selectphoto_button_register
 id selectphoto_imageview_register
+id send_button_chat_log
 id shortcut
 id showCustom
 id showHome
@@ -1266,6 +1269,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1342,11 +1346,15 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat_log
 layout activity_latest_message
 layout activity_login
 layout activity_main
 layout activity_new_message
 layout activity_user
+layout chat_from_row
+layout chat_to_row
+layout content_chat_log
 layout content_latest_message
 layout content_new_message
 layout content_user
@@ -1461,6 +1469,7 @@ string path_password_strike_through
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string title_activity_chat_log
 string title_activity_latest_message
 string title_activity_new_message
 string title_activity_user
