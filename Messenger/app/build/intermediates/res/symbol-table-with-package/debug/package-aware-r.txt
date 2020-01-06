@@ -1124,6 +1124,8 @@ id container
 id content
 id contentPanel
 id coordinator
+id cowimageview
+id cowtextview
 id custom
 id customPanel
 id dark
@@ -1209,6 +1211,7 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id recyclerView2
 id recyclerview_chatlog
 id recyclerview_newmessage
 id register_button_register
@@ -1358,6 +1361,8 @@ layout content_chat_log
 layout content_latest_message
 layout content_new_message
 layout content_user
+layout cow_recyclerview_layout
+layout cowpicturetry
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

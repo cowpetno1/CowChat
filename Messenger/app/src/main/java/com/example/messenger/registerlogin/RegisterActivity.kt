@@ -40,11 +40,9 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         selectphoto_button_register.setOnClickListener {
-            Log.d(TAG,"Try to show photo selector ")
-
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent,0)
+            val intent = Intent(this, picturetry::class.java)
+//            intent.type = "image/*"
+            startActivity(intent)
         }
     }
 
@@ -83,8 +81,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         Log.d(TAG,"Attempting to create user with email : $email")
-
-        uploadImageToFirebaseStorage()
+        saveUserToMongoDB()
+//        uploadImageToFirebaseStorage()
 
     }
 

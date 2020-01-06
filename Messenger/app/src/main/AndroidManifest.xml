@@ -38,6 +38,10 @@
 
         </activity>
         <activity android:name=".registerlogin.LoginActivity" />
+
+        <activity
+            android:name=".registerlogin.picturetry">
+        </activity>
     </application>
 
 </manifest>

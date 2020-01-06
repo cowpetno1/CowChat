@@ -50,6 +50,8 @@
         <activity android:name="com.example.messenger.registerlogin.RegisterActivity" >
         </activity>
         <activity android:name="com.example.messenger.registerlogin.LoginActivity" />
+        <activity android:name="com.example.messenger.registerlogin.picturetry" >
+        </activity>
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
