@@ -25,6 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 androidExtensions {
@@ -55,6 +56,10 @@ dependencies {
 
     implementation 'com.xwray:groupie:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+//    implementation 'io.lettuce:lettuce-core:5.2.1.RELEASE'
+    implementation group: 'redis.clients', name: 'jedis', version: '3.1.0'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

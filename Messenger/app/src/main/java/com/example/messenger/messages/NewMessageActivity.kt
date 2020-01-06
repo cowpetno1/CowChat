@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.messenger.R
+import com.example.messenger.models.User
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
@@ -52,16 +53,12 @@ class NewMessageActivity : AppCompatActivity() {
 
             val intent = Intent(view.context, ChatLogActivity::class.java)
 //          intent.putExtra(USER_KEY,  userItem.user.username)
-            intent.putExtra(USER_KEY, userItem.nameofUser)
+            intent.putExtra(USER_KEY, userItem.user)
             startActivity(intent)
 
             finish()
 
         }
-
-
-
-
     }
 
     val adapter = GroupAdapter<ViewHolder>()
@@ -71,15 +68,16 @@ class NewMessageActivity : AppCompatActivity() {
         override fun run(){
             val client = KMongo.createClient("54.164.138.27:27017")
             val database = client.getDatabase("CowChat")
-            val col = database.getCollection<FindUser>("Users")
+            val col = database.getCollection<User>("Users")
 
 
-            val list : List<FindUser> = col.find().toList()
+
+            val list : List<User> = col.find().toList()
 
             list.forEach {
                 val user = it.userName
                 if(user != null){
-                    adapter.add(UserItem(user))
+                    adapter.add(UserItem(it))
                     this@NewMessageActivity.runOnUiThread(java.lang.Runnable{
                         recyclerview_newmessage.adapter =adapter
                     })
@@ -92,12 +90,9 @@ class NewMessageActivity : AppCompatActivity() {
 
 }
 
-
-
-class UserItem(val nameofUser : String): Item<ViewHolder>(){
+class UserItem(val user : User): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.Username.text =nameofUser
-
+        viewHolder.itemView.Username.text =user.userName
     }
     override fun getLayout(): Int {
         return R.layout.user_row_new_message

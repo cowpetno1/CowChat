@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.litote.kmongo.*
 import java.util.*
 
-data class Jedi(val userName : String, val userEmail : String, val userPassword : String, val userImageUrl : String)//insert Email , Passwd and ImageUrl
+data class Jedi(val userName : String, val userEmail : String, val userPassword : String)//insert Email , Passwd and ImageUrl
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -149,9 +149,7 @@ class RegisterActivity : AppCompatActivity() {
                 Jedi(
                     name,
                     email,
-                    password,
-                    profileImageUrl
-                )
+                    password)
             )}
     }
 

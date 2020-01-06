@@ -7,14 +7,18 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.messenger.R
+import com.example.messenger.messages.FindUser
 import com.example.messenger.messages.LatestMessageActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import org.bson.types.ObjectId
 import org.litote.kmongo.*
 
 data class LoggedinUser(val _id : String?, val userEmail : String?, val userPassword : String?)
 
 object InLoggedUser{
     @JvmStatic var usersEmail : String = ""
+    @JvmStatic lateinit var uid : String
+
 }
 
 class LoginActivity: AppCompatActivity(){
@@ -41,6 +45,7 @@ class LoginActivity: AppCompatActivity(){
         email = email_edittext_login.text.toString()
         password = password_edittext_login.text.toString()
 
+
         if(email.isEmpty() || password.isEmpty()){
             Toast.makeText(this, "Please fill out email/pwd.", Toast.LENGTH_SHORT).show()
             return
@@ -63,6 +68,7 @@ class LoginActivity: AppCompatActivity(){
             if(yoda?.userPassword == password){//Account Exists
                 Log.d("Login", "Successfully logged in")
                 InLoggedUser.usersEmail = email
+                InLoggedUser.uid = yoda._id as String
                 afterLoggedinSuccess()
 
             }else{

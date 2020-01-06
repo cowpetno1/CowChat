@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "C:\\Users\\71414\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\71414\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\billk\\.gradle\\caches\\transforms-2\\files-2.1\\c61184f59dfb0168cc97b05981875f5a\\material-1.0.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\71414\\.gradle\\caches\\transforms-2\\files-2.1\\c61184f59dfb0168cc97b05981875f5a\\material-1.0.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
