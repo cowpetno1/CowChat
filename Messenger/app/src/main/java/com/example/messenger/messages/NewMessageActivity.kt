@@ -28,6 +28,9 @@ class NewMessageActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Select User"
 
+        recyclerview_newmessage.adapter =adapter
+
+
 /*        val adapter = GroupAdapter<ViewHolder>()
 
         adapter.add(UserItem())
@@ -77,9 +80,8 @@ class NewMessageActivity : AppCompatActivity() {
             list.forEach {
                 val user = it.userName
                 if(user != null){
-                    adapter.add(UserItem(it))
                     this@NewMessageActivity.runOnUiThread(java.lang.Runnable{
-                        recyclerview_newmessage.adapter =adapter
+                        adapter.add(UserItem(it))
                     })
 
                 }

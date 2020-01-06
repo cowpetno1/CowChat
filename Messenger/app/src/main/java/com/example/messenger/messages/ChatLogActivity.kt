@@ -39,6 +39,8 @@ class ChatLogActivity : AppCompatActivity() {
         val TAG = "ChatLog"
     }
 
+
+
     lateinit var Touser: User
     val FromUser = InLoggedUser.uid
 
@@ -51,9 +53,12 @@ class ChatLogActivity : AppCompatActivity() {
 
         recyclerview_chatlog.adapter = adapter
 
-
         Touser = intent.getParcelableExtra<User>("USER_KEY")
         supportActionBar?.title = Touser.userName
+
+
+        Log.d("user","")
+
 
         setupDummyData()
 
@@ -86,13 +91,13 @@ class ChatLogActivity : AppCompatActivity() {
                 Log.d("messagelistener_redis", "this is subscriber")
 
                 while (true) {
-                    val brpop = jedis.brpop(0, "message_queue")
+                    val brpop = jedis.brpop(0, InLoggedUser.subscriberkey.toString())
 
                     if (brpop != null){
                         for (text in brpop){
                             if (text!="message_queue"){
                                 this@ChatLogActivity.runOnUiThread {
-                                    adapter.add(ChatToItem(text))
+                                    adapter.add(ChatFromItem(text))
                                 }
                                 Log.d("messagelistener_redis", "im subscriber $text")
                             }
@@ -139,11 +144,6 @@ class ChatLogActivity : AppCompatActivity() {
         messageThread.start()
 
         //notify message change
-//        val messagelistener = Messagelistener_redis()
-
-//        val messagelistener = Messagelistener()
-//        messagelistener.pushmessage(chatmessage.text)
-
         class redis_publisher_runnable : Runnable {
 
             override fun run() {
@@ -152,10 +152,10 @@ class ChatLogActivity : AppCompatActivity() {
                 jedis.auth("admin")
 
 
-                jedis.lpush("message_queue", text)
+                jedis.lpush(InLoggedUser.publisherkey.toString(), text)
 
                 this@ChatLogActivity.runOnUiThread {
-                    adapter.add(ChatFromItem(text))
+                    adapter.add(ChatToItem(text))
                 }
 
                 Log.d("messagelistener_redis", "this is publisher")
@@ -181,11 +181,11 @@ class ChatLogActivity : AppCompatActivity() {
                 message_list.forEach {
                     if (it.fromId == InLoggedUser.uid){
                         this@ChatLogActivity.runOnUiThread {
-                            adapter.add(ChatFromItem(it.text))
+                            adapter.add(ChatToItem(it.text))
                         }
                     }else{
                         this@ChatLogActivity.runOnUiThread {
-                            adapter.add(ChatToItem(it.text))
+                            adapter.add(ChatFromItem(it.text))
                         }
                     }
 
@@ -217,75 +217,4 @@ class ChatToItem(val text:String): Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.chat_to_row
     }
-}
-
-class Messagelistener{
-
-
-    var currentMessage : String by Delegates.observable(""){
-            property, oldValue, newValue ->
-            Log.d("messagelistener_redis","$oldValue -> $newValue")
-    }
-
-    fun listenformessage() {
-
-        class redis_subscriber_runnable : Runnable {
-
-            override fun run() {
-                val jedis = Jedis("3.231.90.126", 6379)
-                jedis.connect()
-                jedis.auth("admin")
-
-                Log.d("messagelistener_redis", "this is subscriber")
-
-                while (true) {
-                    val brpop = jedis.brpop(0, "message_queue")
-//                    for (string in brpop) {
-//                        Log.d("messagelistener_redis", "im subscriber $string")
-//                    }
-                    if (brpop != null){
-                        for (text in brpop){
-                            if (text!="message_queue"){
-                                this@Messagelistener.run {
-                                    currentMessage = text
-                                }
-                                Log.d("messagelistener_redis", "im subscriber $text")
-                            }
-                        }
-                        brpop.clear()
-                    }
-
-                }
-
-            }
-        }
-
-        val redis_subscriber_thread = Thread(redis_subscriber_runnable())
-        redis_subscriber_thread.start()
-
-
-    }
-
-    fun pushmessage(text: String) {
-        class redis_publisher_runnable : Runnable {
-
-            override fun run() {
-                val jedis = Jedis("3.231.90.126", 6379)
-                jedis.connect()
-                jedis.auth("admin")
-
-
-                jedis.lpush("message_queue", text)
-
-                Log.d("messagelistener_redis", "this is publisher")
-            }
-        }
-
-        val redis_publisher_thread = Thread(redis_publisher_runnable())
-        redis_publisher_thread.start()
-    }
-
-
-
-
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.messenger.R
 import com.example.messenger.messages.FindUser
 import com.example.messenger.messages.LatestMessageActivity
+import com.example.messenger.models.User
 import kotlinx.android.synthetic.main.activity_login.*
 import org.bson.types.ObjectId
 import org.litote.kmongo.*
@@ -18,6 +19,8 @@ data class LoggedinUser(val _id : String?, val userEmail : String?, val userPass
 object InLoggedUser{
     @JvmStatic var usersEmail : String = ""
     @JvmStatic lateinit var uid : String
+    @JvmStatic  var subscriberkey = 0
+    @JvmStatic  var publisherkey = 0
 
 }
 
@@ -58,9 +61,9 @@ class LoginActivity: AppCompatActivity(){
         override fun run(){
             val client = KMongo.createClient("54.164.138.27:27017")
             val database = client.getDatabase("CowChat")
-            val col = database.getCollection<LoggedinUser>("Users")
+            val col = database.getCollection<User>("Users")
 
-            var yoda : LoggedinUser? = col.findOne("{userEmail:'$email'}")
+            var yoda : User? = col.findOne("{userEmail:'$email'}")
 
             Log.d("view",yoda.toString())
 
@@ -69,6 +72,9 @@ class LoginActivity: AppCompatActivity(){
                 Log.d("Login", "Successfully logged in")
                 InLoggedUser.usersEmail = email
                 InLoggedUser.uid = yoda._id as String
+                InLoggedUser.subscriberkey = yoda.subscriberkey
+                InLoggedUser.publisherkey = yoda.publisherkey
+
                 afterLoggedinSuccess()
 
             }else{
