@@ -1,9 +1,11 @@
 package com.example.messenger.messages
 
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.example.messenger.JAVAmodels.Messagelistener_redis
 import com.example.messenger.R
 import com.example.messenger.models.Chatmessage
@@ -76,10 +78,6 @@ class ChatLogActivity : AppCompatActivity() {
 
     private fun listenMessage(){
         //message change listener
-//        val messagelistener = Messagelistener_redis()
-
-//        val messagelistener = Messagelistener()
-//        messagelistener.listenformessage()
 
         class redis_subscriber_runnable : Runnable {
 
@@ -104,7 +102,6 @@ class ChatLogActivity : AppCompatActivity() {
                         }
                         brpop.clear()
                     }
-
                 }
 
             }
@@ -150,12 +147,14 @@ class ChatLogActivity : AppCompatActivity() {
                 val jedis = Jedis("3.231.90.126", 6379)
                 jedis.connect()
                 jedis.auth("admin")
-
+ 
 
                 jedis.lpush(InLoggedUser.publisherkey.toString(), text)
 
                 this@ChatLogActivity.runOnUiThread {
                     adapter.add(ChatToItem(text))
+                    editText.text.clear()
+                    Log.d("textcheck",editText.text.toString())
                 }
 
                 Log.d("messagelistener_redis", "this is publisher")
@@ -169,6 +168,8 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun setupDummyData(){
+        //set up history text
+
         val setupmessage = object : Thread() {
             override fun run() {
                 val client = KMongo.createClient("54.164.138.27:27017")
@@ -176,7 +177,6 @@ class ChatLogActivity : AppCompatActivity() {
                 val col = database.getCollection<Chatmessage>("Messages")
 
                 val message_list : List<Chatmessage> = col.find().toList()
-
 
                 message_list.forEach {
                     if (it.fromId == InLoggedUser.uid){
@@ -213,6 +213,7 @@ class ChatToItem(val text:String): Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textView.text = text
     }
+
 
     override fun getLayout(): Int {
         return R.layout.chat_to_row

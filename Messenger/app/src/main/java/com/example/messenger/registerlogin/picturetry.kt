@@ -40,13 +40,10 @@ class picturetry : AppCompatActivity() {
         recyclerView2.adapter = adapter
 
 
-//        adapter.setOnItemClickListener { item, view ->
-//            val intent = Intent(view.context, RegisterActivity::class.java)
-////          intent.putExtra(USER_KEY,  userItem.user.username)
-//
-//            startActivity(intent)
-//            finish()
-//        }
+        adapter.setOnItemClickListener { item, view ->
+
+            finish()
+        }
     }
 }
 class picture(var cowname:String,var cowurl:String): Item<ViewHolder>() {
@@ -60,6 +57,7 @@ class picture(var cowname:String,var cowurl:String): Item<ViewHolder>() {
 //            Picasso.get().load(cowpicture).into(R.layout.activity_main.selectphoto_imageview_register)
 //            val intent = Intent(context, RegisterActivity::class.java)
 //            it.context?.startActivity(intent)
+
         }
 
     }
