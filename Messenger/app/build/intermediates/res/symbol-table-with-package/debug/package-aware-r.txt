@@ -1168,7 +1168,9 @@ id icon_only
 id ifRoom
 id image
 id imageView
+id imageview_latest_message
 id include
+id include2
 id info
 id invisible
 id italic
@@ -1186,6 +1188,7 @@ id masked
 id menu_new_message
 id menu_sign_out
 id message
+id message_textview_latest_message
 id middle
 id mini
 id mtrl_child_content_container
@@ -1213,6 +1216,7 @@ id progress_horizontal
 id radio
 id recyclerView2
 id recyclerview_chatlog
+id recyclerview_latest_messages
 id recyclerview_newmessage
 id register_button_register
 id right
@@ -1295,6 +1299,7 @@ id unlabeled
 id up
 id useLogo
 id username_edittext_register
+id username_textview_latest_message
 id view_offset_helper
 id visible
 id wide
@@ -1377,6 +1382,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout latest_message_row
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action

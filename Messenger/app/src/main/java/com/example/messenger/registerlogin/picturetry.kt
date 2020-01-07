@@ -41,7 +41,12 @@ class picturetry : AppCompatActivity() {
 
 
         adapter.setOnItemClickListener { item, view ->
-
+            val pic = item as picture
+            val intent = Intent(view.context, RegisterActivity::class.java)
+////          intent.putExtra(USER_KEY,  userItem.user.username)
+            cowpicture = pic.cowurl
+            Log.d("123", cowpicture)
+            startActivity(intent)
             finish()
         }
     }
@@ -51,14 +56,13 @@ class picture(var cowname:String,var cowurl:String): Item<ViewHolder>() {
         viewHolder.itemView.cowtextview.text = cowname
         Picasso.get().load(cowurl).into(viewHolder.itemView.cowimageview)
 //        viewHolder.itemView.cowimageview = cowname
-        viewHolder.itemView.setOnClickListener {
-            cowpicture=cowurl
-            Log.d("url",cowurl)
-//            Picasso.get().load(cowpicture).into(R.layout.activity_main.selectphoto_imageview_register)
-//            val intent = Intent(context, RegisterActivity::class.java)
-//            it.context?.startActivity(intent)
-
-        }
+//        viewHolder.itemView.setOnClickListener {
+//            cowpicture=cowurl
+//            Log.d("url",cowurl)
+////            Picasso.get().load(cowpicture).into(R.layout.activity_main.selectphoto_imageview_register)
+////            val intent = Intent(context, RegisterActivity::class.java)
+////            it.context?.startActivity(intent)
+//        }
 
     }
 
