@@ -1,21 +1,19 @@
 package com.example.messenger.messages
 
-import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import com.example.messenger.JAVAmodels.Messagelistener_redis
 import com.example.messenger.R
 import com.example.messenger.models.Chatmessage
 import com.example.messenger.models.User
 import com.example.messenger.registerlogin.InLoggedUser
-import com.example.messenger.registerlogin.Jedi
 import com.example.messenger.registerlogin.LoggedinUser
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.mongodb.client.MongoCursor
 import com.mongodb.client.model.changestream.FullDocument
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
@@ -34,13 +32,13 @@ import java.util.*
 import kotlin.collections.toList
 import kotlin.properties.Delegates
 
-
+var urlto=""
+var urlfrom=""
 class ChatLogActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         val TAG = "ChatLog"
     }
-
 
 
     lateinit var Touser: User
@@ -58,8 +56,9 @@ class ChatLogActivity : AppCompatActivity() {
         Touser = intent.getParcelableExtra<User>("USER_KEY")
         supportActionBar?.title = Touser.userName
 
-
-        Log.d("user","")
+        Log.d("urlto", InLoggedUser.uid)
+        Log.d("urlfrom", Touser._id)
+        Log.d("user", "")
 
 
         setupDummyData()
@@ -70,13 +69,13 @@ class ChatLogActivity : AppCompatActivity() {
         //send message
         send_button_chat_log.setOnClickListener {
 
-            Log.d(TAG,"Attempt to send message")
+            Log.d(TAG, "Attempt to send message")
 
             performSendMessage()
         }
     }
 
-    private fun listenMessage(){
+    private fun listenMessage() {
         //message change listener
 
         class redis_subscriber_runnable : Runnable {
@@ -91,9 +90,9 @@ class ChatLogActivity : AppCompatActivity() {
                 while (true) {
                     val brpop = jedis.brpop(0, InLoggedUser.subscriberkey.toString())
 
-                    if (brpop != null){
-                        for (text in brpop){
-                            if (text!="message_queue"){
+                    if (brpop != null) {
+                        for (text in brpop) {
+                            if (text != "message_queue") {
                                 this@ChatLogActivity.runOnUiThread {
                                     adapter.add(ChatFromItem(text))
                                 }
@@ -113,7 +112,7 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
 
-    private fun performSendMessage(){
+    private fun performSendMessage() {
         //how do we actually send a message to mongodb ...
         //and use redis to notify data change
 
@@ -124,16 +123,31 @@ class ChatLogActivity : AppCompatActivity() {
         val fromId = InLoggedUser.uid
         val Toid = Touser._id
 
-        val chatmessage = Chatmessage(message_id,text,fromId,Toid,System.currentTimeMillis()/1000)
+        val chatmessage =
+            Chatmessage(message_id, text, fromId, Toid, System.currentTimeMillis() / 1000)
+        val updatemessage =
+            Chatmessage(Toid + fromId, text, fromId, Toid, System.currentTimeMillis() / 1000)
 
-
-        var messageThread = object : Thread(){
+        var messageThread = object : Thread() {
             override fun run() {
                 val client = KMongo.createClient("54.164.138.27:27017")
                 val database = client.getDatabase("CowChat")
                 val col = database.getCollection<Chatmessage>("Messages")
 
                 col.insertOne(chatmessage)
+//billkuo1234@gmail.com
+                val col2 = database.getCollection<Chatmessage>("latest-messages")
+
+                val yoda: Chatmessage? = col2.findOne(Chatmessage::_id eq Toid + fromId)
+
+
+                if (yoda != null) {
+                    col2.updateOneById(Toid + fromId, updatemessage)
+                } else {
+                    col2.insertOne(updatemessage)
+                }
+
+
             }
         }
 
@@ -147,14 +161,14 @@ class ChatLogActivity : AppCompatActivity() {
                 val jedis = Jedis("3.231.90.126", 6379)
                 jedis.connect()
                 jedis.auth("admin")
- 
+
 
                 jedis.lpush(InLoggedUser.publisherkey.toString(), text)
 
                 this@ChatLogActivity.runOnUiThread {
                     adapter.add(ChatToItem(text))
                     editText.text.clear()
-                    Log.d("textcheck",editText.text.toString())
+                    Log.d("textcheck", editText.text.toString())
                 }
 
                 Log.d("messagelistener_redis", "this is publisher")
@@ -167,7 +181,7 @@ class ChatLogActivity : AppCompatActivity() {
 
     }
 
-    private fun setupDummyData(){
+    private fun setupDummyData() {
         //set up history text
 
         val setupmessage = object : Thread() {
@@ -176,32 +190,53 @@ class ChatLogActivity : AppCompatActivity() {
                 val database = client.getDatabase("CowChat")
                 val col = database.getCollection<Chatmessage>("Messages")
 
-                val message_list : List<Chatmessage> = col.find().toList()
+                val message_list: List<Chatmessage> = col.find().toList()
+                val col3 = database.getCollection<User>("Users")
+                val user: List<User> = col3.find().toList()
+
+//                user.forEach {
+//                    if (it._id==InLoggedUser.uid){
+//                        urlto=it.profileImageUrl
+//                    }
+//                    else if(it._id==Touser._id){
+//                        urlfrom=it.profileImageUrl
+//                    }
+//                }
 
                 message_list.forEach {
-                    if (it.fromId == InLoggedUser.uid){
+                    if (it.fromId == InLoggedUser.uid) {
+                        user.forEach {
+                            if (it._id == InLoggedUser.uid)
+                                urlto = it.profileImageUrl
+                        }
                         this@ChatLogActivity.runOnUiThread {
                             adapter.add(ChatToItem(it.text))
                         }
-                    }else{
+                    } else {
+                        user.forEach {
+                            if (it._id == Touser._id)
+                                urlfrom = it.profileImageUrl
+                        }
                         this@ChatLogActivity.runOnUiThread {
                             adapter.add(ChatFromItem(it.text))
                         }
                     }
-
-                    Log.d(TAG,"this is user message: $it")
+                    Log.d(TAG, "this is user message: $it")
                 }
             }
         }
 
-        setupmessage.start()
 
+        setupmessage.start()
     }
 }
+
 
 class ChatFromItem(val text:String): Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textView.text = text
+        Log.d("InLoggedUserurl",InLoggedUser.profileImageUrl)
+        Picasso.get()?.load(urlfrom)?.into(viewHolder.itemView.imageViewFrom)
     }
 
     override fun getLayout(): Int {
@@ -212,6 +247,8 @@ class ChatFromItem(val text:String): Item<ViewHolder>() {
 class ChatToItem(val text:String): Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textView.text = text
+//        Log.d("InLoggedUserurl",InLoggedUser.profileImageUrl)
+        Picasso.get().load(urlto).into(viewHolder.itemView.imageViewto)
     }
 
 

@@ -18,10 +18,10 @@ data class LoggedinUser(val _id : String?, val userEmail : String?, val userPass
 
 object InLoggedUser{
     @JvmStatic var usersEmail : String = ""
-    @JvmStatic lateinit var uid : String
+    @JvmStatic  var uid : String = ""
     @JvmStatic  var subscriberkey = 0
     @JvmStatic  var publisherkey = 0
-
+    @JvmStatic  var profileImageUrl : String = ""
 }
 
 class LoginActivity: AppCompatActivity(){

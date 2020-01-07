@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
@@ -42,11 +43,16 @@ class picturetry : AppCompatActivity() {
 
         adapter.setOnItemClickListener { item, view ->
             val pic = item as picture
-            val intent = Intent(view.context, RegisterActivity::class.java)
+//            val intent = Intent(view.context, RegisterActivity::class.java)
 ////          intent.putExtra(USER_KEY,  userItem.user.username)
+            var bundle=Bundle()
             cowpicture = pic.cowurl
             Log.d("123", cowpicture)
-            startActivity(intent)
+            bundle.putString("url", cowpicture)
+            val newintent=Intent()
+            newintent.putExtra("key", bundle)
+            setResult(10, newintent)
+//            startActivity(intent)
             finish()
         }
     }
@@ -59,7 +65,7 @@ class picture(var cowname:String,var cowurl:String): Item<ViewHolder>() {
 //        viewHolder.itemView.setOnClickListener {
 //            cowpicture=cowurl
 //            Log.d("url",cowurl)
-////            Picasso.get().load(cowpicture).into(R.layout.activity_main.selectphoto_imageview_register)
+//            Picasso.get().load(cowpicture).into()
 ////            val intent = Intent(context, RegisterActivity::class.java)
 ////            it.context?.startActivity(intent)
 //        }
