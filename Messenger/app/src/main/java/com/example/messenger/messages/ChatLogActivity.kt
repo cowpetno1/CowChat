@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.MainThread
 import com.example.messenger.JAVAmodels.Messagelistener_redis
 import com.example.messenger.R
 import com.example.messenger.models.Chatmessage
@@ -34,6 +35,7 @@ import kotlin.properties.Delegates
 
 var urlto=""
 var urlfrom=""
+var latestText = ""
 class ChatLogActivity : AppCompatActivity() {
 
     companion object {
@@ -166,7 +168,7 @@ class ChatLogActivity : AppCompatActivity() {
                 jedis.lpush(InLoggedUser.publisherkey.toString(), text)
 
                 this@ChatLogActivity.runOnUiThread {
-                    adapter.add(ChatToItem(text))
+                    adapter.add(ChatToItem(text,""))
                     editText.text.clear()
                     Log.d("textcheck", editText.text.toString())
                 }
@@ -210,7 +212,7 @@ class ChatLogActivity : AppCompatActivity() {
                                 urlto = it.profileImageUrl
                         }
                         this@ChatLogActivity.runOnUiThread {
-                            adapter.add(ChatToItem(it.text))
+                            adapter.add(ChatToItem(it.text,it._id))
                         }
                     } else {
                         user.forEach {
@@ -235,6 +237,7 @@ class ChatLogActivity : AppCompatActivity() {
 class ChatFromItem(val text:String): Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textView.text = text
+//        latestMessage = text
         Log.d("InLoggedUserurl",InLoggedUser.profileImageUrl)
         Picasso.get()?.load(urlfrom)?.into(viewHolder.itemView.imageViewFrom)
     }
@@ -244,12 +247,36 @@ class ChatFromItem(val text:String): Item<ViewHolder>() {
     }
 }
 
-class ChatToItem(val text:String): Item<ViewHolder>() {
+var idids = ""
+
+
+class ChatToItem(val text:String,val _id:String): Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textView.text = text
+//        latestMessage = text
 //        Log.d("InLoggedUserurl",InLoggedUser.profileImageUrl)
         Picasso.get().load(urlto).into(viewHolder.itemView.imageViewto)
+
+        viewHolder.itemView.deleted.setOnClickListener {
+            idids=_id
+            deleteThread.start()
+//            viewHolder.itemView.remove(position)
+        }
+
     }
+
+    var deleteThread = object :Thread(){
+        override fun run() {
+            val client = KMongo.createClient("54.164.138.27:27017")
+            val database = client.getDatabase("CowChat")
+            val col = database.getCollection<Chatmessage>("Messages")
+            col.deleteOne("{_id:'$idids'}")
+
+        }
+
+    }
+
+
 
 
     override fun getLayout(): Int {

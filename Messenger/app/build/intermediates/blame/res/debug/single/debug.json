@@ -56,6 +56,10 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_garbage.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\mipmap-mdpi\\garbage.png"
+    },
+    {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
@@ -198,6 +202,10 @@
     {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\c61184f59dfb0168cc97b05981875f5a\\material-1.0.0\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_garbage.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\mipmap-hdpi\\garbage.png"
     },
     {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -920,6 +928,10 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_garbage.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\mipmap-xhdpi\\garbage.png"
+    },
+    {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
@@ -1636,6 +1648,10 @@
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\715cca4343ebb891a03ad22917eb7ca0\\core-1.0.2\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_garbage.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\mipmap-xxxhdpi\\garbage.png"
+    },
+    {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
@@ -2034,6 +2050,10 @@
     {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_select_dialog_material.xml.flat",
         "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\24d3d7f244106b9c0797caf2c0da90a1\\appcompat-1.0.2\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_garbage.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\src\\main\\res\\mipmap-xxhdpi\\garbage.png"
     },
     {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Final_project_CowChat\\Messenger\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13_mtrl_layout_snackbar.xml.flat",
