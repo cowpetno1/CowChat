@@ -35,6 +35,8 @@ import java.util.*
 import kotlin.collections.toList
 import kotlin.properties.Delegates
 
+
+
 var urlto=""
 var urlfrom=""
 var latestText = ""
@@ -262,6 +264,7 @@ class ChatToItem(val text:String,val _id:String): Item<ViewHolder>() {
         viewHolder.itemView.deleted.setOnClickListener {
             idids=_id
             deleteThread.start()
+            viewHolder.itemView.textView.text="已收回訊息"
 //            viewHolder.itemView.remove(position)
         }
 
