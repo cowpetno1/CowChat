@@ -91,6 +91,7 @@ attr behavior_skipCollapsed
 attr borderWidth
 attr borderlessButtonStyle
 attr bottomAppBarStyle
+attr bottomEdgeSwipeOffset
 attr bottomNavigationStyle
 attr bottomSheetDialogTheme
 attr bottomSheetStyle
@@ -154,6 +155,7 @@ attr civ_border_overlay
 attr civ_border_width
 attr civ_circle_background_color
 attr civ_fill_color
+attr clickToClose
 attr closeIcon
 attr closeIconEnabled
 attr closeIconEndPadding
@@ -213,6 +215,7 @@ attr divider
 attr dividerHorizontal
 attr dividerPadding
 attr dividerVertical
+attr drag_edge
 attr drawableSize
 attr drawerArrowStyle
 attr dropDownListViewStyle
@@ -369,6 +372,7 @@ attr layout_keyline
 attr layout_optimizationLevel
 attr layout_scrollFlags
 attr layout_scrollInterpolator
+attr leftEdgeSwipeOffset
 attr liftOnScroll
 attr lineHeight
 attr lineSpacing
@@ -425,6 +429,7 @@ attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
 attr reverseLayout
+attr rightEdgeSwipeOffset
 attr rippleColor
 attr scopeUris
 attr scrimAnimationDuration
@@ -441,6 +446,7 @@ attr showDividers
 attr showMotionSpec
 attr showText
 attr showTitle
+attr show_mode
 attr singleChoiceItemLayout
 attr singleLine
 attr singleSelection
@@ -553,6 +559,7 @@ attr toolbarStyle
 attr tooltipForegroundColor
 attr tooltipFrameBackground
 attr tooltipText
+attr topEdgeSwipeOffset
 attr track
 attr trackTint
 attr trackTintMode
@@ -651,6 +658,8 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gray
+color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color material_blue_grey_800
@@ -1110,6 +1119,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id bottom_wrapper
 id buttonPanel
 id center
 id center_horizontal
@@ -1131,6 +1141,7 @@ id customPanel
 id dark
 id decor_content_parent
 id default_activity_button
+id deleted
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1149,7 +1160,6 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1168,6 +1178,8 @@ id icon_only
 id ifRoom
 id image
 id imageView
+id imageViewFrom
+id imageViewto
 id imageview_latest_message
 id include
 id include2
@@ -1177,6 +1189,7 @@ id italic
 id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
+id lay_down
 id left
 id light
 id line1
@@ -1213,6 +1226,7 @@ id percent
 id pin
 id progress_circular
 id progress_horizontal
+id pull_out
 id radio
 id recyclerView2
 id recyclerview_chatlog
@@ -1222,6 +1236,7 @@ id register_button_register
 id right
 id right_icon
 id right_side
+id sample2
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1247,6 +1262,7 @@ id selectphoto_button_register
 id selectphoto_imageview_register
 id send_button_chat_log
 id shortcut
+id show
 id showCustom
 id showHome
 id showTitle
@@ -1397,6 +1413,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout user_row_new_message
 menu nav_menu
+mipmap garbage
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description
@@ -2053,6 +2070,7 @@ styleable SnackbarLayout android_maxWidth elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
+styleable SwipeLayout bottomEdgeSwipeOffset clickToClose drag_edge leftEdgeSwipeOffset rightEdgeSwipeOffset show_mode topEdgeSwipeOffset
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable TabItem android_icon android_layout android_text
 styleable TabLayout tabBackground tabContentStart tabGravity tabIconTint tabIconTintMode tabIndicator tabIndicatorAnimationDuration tabIndicatorColor tabIndicatorFullWidth tabIndicatorGravity tabIndicatorHeight tabInlineLabel tabMaxWidth tabMinWidth tabMode tabPadding tabPaddingBottom tabPaddingEnd tabPaddingStart tabPaddingTop tabRippleColor tabSelectedTextColor tabTextAppearance tabTextColor tabUnboundedRipple

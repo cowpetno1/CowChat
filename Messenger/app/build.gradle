@@ -59,7 +59,7 @@ dependencies {
 
 //    implementation 'io.lettuce:lettuce-core:5.2.1.RELEASE'
     implementation group: 'redis.clients', name: 'jedis', version: '3.1.0'
-
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
 
 }
 apply plugin: 'com.google.gms.google-services'

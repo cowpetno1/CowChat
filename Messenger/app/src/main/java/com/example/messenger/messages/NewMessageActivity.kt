@@ -7,12 +7,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.messenger.R
 import com.example.messenger.models.User
+import com.example.messenger.registerlogin.InLoggedUser
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_new_message.*
+import kotlinx.android.synthetic.main.latest_message_row.view.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 import org.litote.kmongo.KMongo
 import org.litote.kmongo.getCollection
@@ -79,7 +81,7 @@ class NewMessageActivity : AppCompatActivity() {
 
             list.forEach {
                 val user = it.userName
-                if(user != null){
+                if(it._id !=InLoggedUser.uid ){
                     this@NewMessageActivity.runOnUiThread(java.lang.Runnable{
                         adapter.add(UserItem(it))
                     })
@@ -95,6 +97,7 @@ class NewMessageActivity : AppCompatActivity() {
 class UserItem(val user : User): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.Username.text =user.userName
+        Picasso.get().load(user.profileImageUrl).into(viewHolder.itemView.imageView)
     }
     override fun getLayout(): Int {
         return R.layout.user_row_new_message
