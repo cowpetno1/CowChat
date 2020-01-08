@@ -1,10 +1,12 @@
 package com.example.messenger.messages
 
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.annotation.MainThread
+import androidx.recyclerview.widget.RecyclerView
 import com.example.messenger.JAVAmodels.Messagelistener_redis
 import com.example.messenger.R
 import com.example.messenger.models.Chatmessage
@@ -94,7 +96,7 @@ class ChatLogActivity : AppCompatActivity() {
 
                     if (brpop != null) {
                         for (text in brpop) {
-                            if (text != "message_queue") {
+                            if (text != InLoggedUser.subscriberkey.toString()) {
                                 this@ChatLogActivity.runOnUiThread {
                                     adapter.add(ChatFromItem(text))
                                 }
