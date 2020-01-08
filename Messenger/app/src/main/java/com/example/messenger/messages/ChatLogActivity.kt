@@ -77,7 +77,10 @@ class ChatLogActivity : AppCompatActivity() {
 
             Log.d(TAG, "Attempt to send message")
 
-            performSendMessage()
+            if(editText.text.toString() != null){
+                performSendMessage()
+            }
+
         }
     }
 
@@ -162,6 +165,7 @@ class ChatLogActivity : AppCompatActivity() {
 
         //record message in mongo db
         messageThread.start()
+
 
         //notify message change
         class redis_publisher_runnable : Runnable {
