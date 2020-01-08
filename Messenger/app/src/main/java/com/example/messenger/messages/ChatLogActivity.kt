@@ -99,6 +99,7 @@ class ChatLogActivity : AppCompatActivity() {
                     if (brpop != null) {
                         for (text in brpop) {
                             if (text != InLoggedUser.subscriberkey.toString()) {
+                                Log.d("messagelistener_redis","this is working")
                                 this@ChatLogActivity.runOnUiThread {
                                     adapter.add(ChatFromItem(text))
                                 }
