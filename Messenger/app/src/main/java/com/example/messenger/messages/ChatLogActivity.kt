@@ -155,6 +155,8 @@ class ChatLogActivity : AppCompatActivity() {
                 }
 
 
+
+
             }
         }
 
@@ -264,19 +266,21 @@ class ChatToItem(val text:String,val _id:String): Item<ViewHolder>() {
 
         viewHolder.itemView.deleted.setOnClickListener {
             idids=_id
-            deleteThread.start()
+            val DeleteThread = Thread(deleteThread)
+            DeleteThread.start()
             viewHolder.itemView.textView.text="已收回訊息"
 //            viewHolder.itemView.remove(position)
         }
 
     }
 
-    var deleteThread = object :Thread(){
+    var deleteThread = object :Runnable{
         override fun run() {
             val client = KMongo.createClient("54.164.138.27:27017")
             val database = client.getDatabase("CowChat")
             val col = database.getCollection<Chatmessage>("Messages")
             col.deleteOne("{_id:'$idids'}")
+            Log.d("messagelistener_reids","delete successful")
 
         }
 
