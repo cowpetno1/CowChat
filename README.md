@@ -1,1 +1,1 @@
-# Final_project_CowChat
+# CowChat
